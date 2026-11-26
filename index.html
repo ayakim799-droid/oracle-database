@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>University Database</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    margin: 0;
+}
+header {
+    background: #172554;
+    color: white;
+    padding: 25px;
+}
+main {
+    padding: 30px;
+}
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px #00000015;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+th {
+    background: #2563eb;
+    color: white;
+}
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 60%;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>University Database System</h1>
+<p>Oracle Database | GitHub</p>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Студенттер</h2>
+
+<input type="text" id="search"
+placeholder="Студентті іздеу..."
+onkeyup="searchStudent()">
+
+<table id="students">
+<tr>
+<th>ID</th>
+<th>Аты-жөні</th>
+<th>Жасы</th>
+<th>Пәні</th>
+</tr>
+<tr>
+<td>1</td>
+<td>Ayazhan</td>
+<td>20</td>
+<td>Programming</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Aruzhan</td>
+<td>21</td>
+<td>Database</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Amina</td>
+<td>19</td>
+<td>Programming</td>
+</tr>
+</table>
+</div>
+
+<div class="card">
+<h2>Пәндер</h2>
+<table>
+<tr><th>ID</th><th>Пән атауы</th></tr>
+<tr><td>1</td><td>Programming</td></tr>
+<tr><td>2</td><td>Database</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>Деректер қорының байланыстары</h2>
+<p>UNI_STUDENTS → UNI_ENROLLMENTS</p>
+<p>UNI_COURSES → UNI_ENROLLMENTS</p>
+<p>Primary Key және Foreign Key</p>
+<p>Байланыс түрі: Many-to-Many (N:M)</p>
+
+<button onclick="window.open(
+'database.sql')">
+SQL кодын ашу
+</button>
+</div>
+
+</main>
+
+<script>
+function searchStudent() {
+    let input = document.getElementById(
+        "search").value.toLowerCase();
+
+    let rows = document.getElementById(
+        "students").rows;
+
+    for(let i = 1; i < rows.length; i++) {
+        rows[i].style.display =
+        rows[i].textContent.toLowerCase()
+        .includes(input) ? "" : "none";
+    }
+}
+</script>
+
+</body>
+</html>
